@@ -24,13 +24,13 @@ public class SQLHelper {
         for (int i = 0; i < 15; i++) {
             try (var conn = getConn()) {
                 String code = runner.query(conn, codeSQL, new ScalarHandler<String>());
-                if (code != null) {
+                if (code != null && !code.trim().isEmpty()) {
                     return code;
                 }
             }
             Thread.sleep(1000);
         }
-        return null;
+        throw new RuntimeException("БАЗА ДАННЫХ ПУСТА! Сервер не сгенерировал SMS-код за 15 секунд.");
     }
 
     @SneakyThrows
