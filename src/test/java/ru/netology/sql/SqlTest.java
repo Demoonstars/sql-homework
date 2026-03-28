@@ -14,6 +14,7 @@ public class SqlTest {
 
     @BeforeEach
     void setup() {
+        SQLHelper.cleanDatabase();
         Configuration.timeout = 15000;
         open("http://localhost:9999");
     }
