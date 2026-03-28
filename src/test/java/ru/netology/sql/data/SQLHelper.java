@@ -22,7 +22,15 @@ public class SQLHelper {
     public static String getVerificationCode() {
         var codeSQL = "SELECT code FROM auth_codes ORDER BY created DESC LIMIT 1";
         try (var conn = getConn()) {
-            return runner.query(conn, codeSQL, new ScalarHandler<String>());
+            String code = null;
+            for (int i = 0; i < 5; i++) {
+                code = runner.query(conn, codeSQL, new ScalarHandler<String>());
+                if (code != null) {
+                    return code;
+                }
+                Thread.sleep(1000);
+            }
+            return code;
         }
     }
 
