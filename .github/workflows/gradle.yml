@@ -14,11 +14,11 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
-      - name: Start MySQL via Docker Compose
-        run: docker-compose up -d
+      - name: Container start
+        uses: hoverkraft-tech/compose-action@v2.0.1
 
-      - name: Wait for database
-        run: sleep 15
+      - name: Waiting for container start
+        run: sleep 30
 
       - name: Start SUT
         run: java -jar artifacts/app-deadline.jar &
