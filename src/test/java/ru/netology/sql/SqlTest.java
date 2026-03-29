@@ -13,7 +13,6 @@ public class SqlTest {
 
     @BeforeEach
     void setup() {
-        SQLHelper.cleanDatabase();
         open("http://localhost:9999");
     }
 
