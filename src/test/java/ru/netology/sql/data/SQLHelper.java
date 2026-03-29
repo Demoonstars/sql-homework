@@ -38,6 +38,8 @@ public class SQLHelper {
         try (var conn = getConn()) {
             runner.execute(conn, "DELETE FROM auth_codes");
             runner.execute(conn, "DELETE FROM card_transactions");
+            runner.execute(conn, "DELETE FROM cards");
+            runner.execute(conn, "DELETE FROM users");
         }
     }
 }

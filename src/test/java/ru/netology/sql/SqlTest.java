@@ -1,6 +1,5 @@
 package ru.netology.sql;
 
-import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,6 @@ public class SqlTest {
     @BeforeEach
     void setup() {
         SQLHelper.cleanDatabase();
-        Configuration.timeout = 15000;
         open("http://localhost:9999");
     }
 
